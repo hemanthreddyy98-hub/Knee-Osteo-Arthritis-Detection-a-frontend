@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knee Osteoarthritis Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🦴 Knee Osteoarthritis Analysis</h1>
+            <p>Simple and Basic Frontend</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
+            <button class="nav-btn" onclick="showPage('upload')">📤 Upload</button>
+            <button class="nav-btn" onclick="showPage('results')">📊 Results</button>
+            <button class="nav-btn" onclick="showPage('about')">ℹ️ About</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <h2>🏠 Home</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Welcome to Knee Osteoarthritis Analysis</h3>
+                        <p>This is a simple frontend for analyzing knee X-ray images.</p>
+                        <ul>
+                            <li>Upload X-ray images</li>
+                            <li>View analysis results</li>
+                            <li>Simple and clean interface</li>
+                        </ul>
+                    </div>
+                    <div class="content-card">
+                        <h3>Quick Stats</h3>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">8,000</span>
+                                <span class="stat-label">Total Images</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Classes</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">67%</span>
+                                <span class="stat-label">Best Model</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Page -->
+            <div id="upload" class="page">
+                <h2>📤 Upload Image</h2>
+                <div class="upload-area">
+                    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">📁</div>
+                        <p>Click to upload X-ray image</p>
+                        <p class="upload-hint">Supports: PNG, JPG, JPEG</p>
+                    </div>
+                    <input type="file" id="fileInput" accept=".png,.jpg,.jpeg" style="display: none;" onchange="handleFileUpload(event)">
+                </div>
+                
+                <div id="imagePreview" class="image-preview" style="display: none;">
+                    <img id="previewImg" src="" alt="Preview">
+                    <button class="analyze-btn" onclick="analyzeImage()">🔍 Analyze Image</button>
+                </div>
+
+                <div id="analysisResults" class="results" style="display: none;">
+                    <h3>Analysis Results</h3>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="result-label">Classification</span>
+                            <span class="result-value" id="classification">-</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">Confidence</span>
+                            <span class="result-value" id="confidence">-</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">KL Score</span>
+                            <span class="result-value" id="klScore">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Page -->
+            <div id="results" class="page">
+                <h2>📊 Results</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Model Performance</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Accuracy</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Xception</td>
+                                    <td>67%</td>
+                                    <td>68 min</td>
+                                </tr>
+                                <tr>
+                                    <td>ResNet-50</td>
+                                    <td>65%</td>
+                                    <td>80 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Inception</td>
+                                    <td>64%</td>
+                                    <td>56 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Ensemble</td>
+                                    <td>69%</td>
+                                    <td>16 sec</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="content-card">
+                        <h3>Class Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="chartCanvas" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Page -->
+            <div id="about" class="page">
+                <h2>ℹ️ About</h2>
+                <div class="content-card">
+                    <h3>Knee Osteoarthritis Analysis</h3>
+                    <p>This is a simple frontend application for analyzing knee X-ray images.</p>
+                    <p><strong>Purpose:</strong> Classify osteoarthritis severity using KL scores.</p>
+                    <p><strong>Technology:</strong> Built with HTML, CSS, and JavaScript.</p>
+                    <p><strong>Note:</strong> This is a basic demonstration frontend.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Simple Knee Osteoarthritis Analysis Frontend</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
